@@ -47,6 +47,7 @@ function onsearchImage(query, page, perPage) {
       } else {
         renderGalleryCard(array);
         loadMoreBtn.classList.add('is-hidden');
+        loadMoreBtn.scrollIntoView({behavior: 'smooth',  block: 'end',  });
       }
     }).catch((err) => {
       error({ text: 'Something went wrong.Please try again' })
@@ -60,7 +61,6 @@ function onsearchImage(query, page, perPage) {
 
 form.addEventListener('submit', ((e) => { e.preventDefault(); resetPage(); clearContainer(); onSearch() }));
 loadMoreBtn.addEventListener('click', ((e) => {
-  e.preventDefault();
   page = page + 1;
   onSearch();
 }));
